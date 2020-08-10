@@ -17,7 +17,7 @@ func withdraw() { //defining a function to withdraw money
 	if WdwAmount%100 != 0 || WdwAmount <= 0 { //checks if the amount entered by the user is not a multiple of 100 and not less than or equalto zero
 		fmt.Println("\n\tPlease enter the amount in multiples of 100") //if the condition is true ,this message is printed using println function
 
-	} else if WdwAmount > 2000 { //Maximum allowed per transaction is 2000
+	} else if WdwAmount >= 2000 { //Maximum allowed per transaction is 2000
 		if WdwAmount >= amount { //if the withdrawal amount is greater than amount
 			fmt.Println("\ninsufficient balance") //if the condition is true print the message
 		} else {
