@@ -32,7 +32,11 @@ variable scoping
 there was no error handling in case of user entered string/text not number 
 
 Issue:
+
+
 In case of invalid data entry , when I run the program output is like this:
+
+
 go run atm.go
 
 	Checking Balance ....
@@ -40,9 +44,17 @@ go run atm.go
 	Balance Amount : 4563
 
 	Enter the amount to withdraw
+	
+	
 ggul
+
+
 Invalid input, expected integer
+
+
 ❯ gul
+
+
 zsh: command not found: gul
 
 
