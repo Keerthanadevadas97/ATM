@@ -8,13 +8,10 @@ import (
 )
 
 var amount int = 4563
+var WdwAmount int
 
 func withdraw() { //defining a function to withdraw money
-	var WdwAmount int
-	fmt.Printf("\n\tChecking Balance ....\n\n\tBalance Amount : %d\n", amount) //Check for balance before allowing to withdraw
-	fmt.Println("\n\tEnter the amount to withdraw")                            //printing a message to enter the amount to withdraw using println function
-	fmt.Scanln(&WdwAmount)                                                     //takes the user input and scans the value
-	if WdwAmount%100 != 0 {                                                    //checks if the amount entered by the user is not a multiple of 100 and not less than or equal to zero
+	if WdwAmount%100 != 0 { //checks if the amount entered by the user is not a multiple of 100 and not less than or equal to zero
 		fmt.Println("\n\tPlease enter the amount in multiples of 100") //if the condition is true ,this message is printed using println function
 	} else if WdwAmount == 0 { //if withdraw amount is equal to zero
 		fmt.Println("Please enter a valid amount") //print this message
@@ -56,10 +53,22 @@ func main() {
 	//Max 5 transactions per day
 	exit := false            //assign a boolean value false to a new variable x
 	for i := 0; i < 5; i++ { //defining a for loop
-		withdraw()                                                                                            //call withdraw function
+		fmt.Printf("\n\tChecking Balance ....\n\n\tBalance Amount : %d\n", amount) //Check for balance before allowing to withdraw
+		fmt.Println("\n\tEnter the amount to withdraw")                            //printing a message to enter the amount to withdraw using println function
+		_, err := fmt.Scanln(&WdwAmount)                                           //takes the user input and scans the value
+		if err != nil {                                                            //if there is error
+			fmt.Println("Invalid input,", err) //prints this message
+			break                              //breaks the loop
+		} else { //otherwise
+			withdraw() //call withdraw function
+		}
 		fmt.Println("\nDo you want to continue?,please enter your choice press 1 to continue or 2 to cancel") //printing the message asking to continue withdrawal
-		fmt.Scanln(&choice)                                                                                   //scan the value of type int
-		if i == 4 {                                                                                           //if condition to check if i ==4
+		_, err1 := fmt.Scanln(&choice)                                                                        //scan the value of type int
+		if err1 != nil {
+			fmt.Println("Invalid entry,", err1)
+			break
+		}
+		if i == 4 { //if condition to check if i ==4
 			fmt.Println("Sorry you have reached the maximum limit") //prints this message
 			break                                                   //break the loop
 		}
